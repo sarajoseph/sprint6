@@ -1,8 +1,9 @@
 import React from 'react'
-interface BudgetProps {
-	budget: number
-}
-export const Budget = ({budget}:BudgetProps) => {
+import { useBudget } from '../context/AppContext'
+
+export const Budget = () => {
+	const { budget } = useBudget()
+
 	return (
 		<div>
 			Preu pressuposat: {budget}
