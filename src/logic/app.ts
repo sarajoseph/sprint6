@@ -1,4 +1,4 @@
-import { ProductsProps } from "../constants"
+import { ProductsProps, WEB_PRODUCT_ID } from "../constants"
 
 export const updateSelectedProducts = (selectedProducts: ProductsProps, productID: string, checked: boolean): ProductsProps => {
 	const newSelectedProducts = selectedProducts.map((product) => {
@@ -10,11 +10,24 @@ export const updateSelectedProducts = (selectedProducts: ProductsProps, productI
 	return newSelectedProducts
 }
 
+export const updateWebFields = (selectedProducts: ProductsProps, qnty_npt_id: string, inputNumber: number) => {
+	const newSelectedProducts = selectedProducts.map((product) => {
+		if (product.id === WEB_PRODUCT_ID) {
+			product[qnty_npt_id] = inputNumber
+		}
+		return product
+	})
+	return newSelectedProducts
+}
+
 export const updateBudget = (selectedProducts: ProductsProps): number => {
 	let newBudget = 0
 	selectedProducts.map((product) => {
 		if (product.selected === true) {
 			newBudget += product.price
+			if (product.id === WEB_PRODUCT_ID) {
+				newBudget += (product.pages + product.languages) * 30
+			}			
 		}      
 	})
 	return newBudget

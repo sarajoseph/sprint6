@@ -1,8 +1,8 @@
-import React from 'react'
-import { useBudget } from '../context/AppContext'
+import React, { useContext } from 'react'
+import { AppContext } from '../context/AppContext'
 
 export const Budget = () => {
-	const { budget } = useBudget()
+	const { budget } = useContext(AppContext)
 
 	return (
 		<div>

@@ -1,9 +1,11 @@
 export type ProductsProps = {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  selected: boolean;
+  id: string
+  name: string
+  description: string
+  price: number
+  selected: boolean
+  pages?: number
+  languages?: number
 }[]
 export const products: ProductsProps = [
   {
@@ -25,6 +27,9 @@ export const products: ProductsProps = [
     'name': 'Web',
     'description': 'Programació d\'una web responsive completa',
     'price': 500,
-    'selected': false
+    'selected': false,
+    'pages': 1,
+    'languages': 1
   },
 ]
+export const WEB_PRODUCT_ID: string = 'product03'

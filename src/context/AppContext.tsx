@@ -1,18 +1,8 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import { ProductsProps, products } from '../constants'
 import { updateBudget } from '../logic/app'
 
 export const AppContext = createContext(null)
-
-export function useSelectedProducts() {
-	const { selectedProducts, setSelectedProducts } = useContext(AppContext)
-	return { selectedProducts, setSelectedProducts }
-}
-
-export function useBudget() {
-	const { budget, setBudget } = useContext(AppContext)
-	return { budget, setBudget }
-}
 
 export const AppProvider = ({children}) => {	
   const [budget, setBudget] = useState<number>(0)
