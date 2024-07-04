@@ -33,3 +33,18 @@ export const products: ProductsProps = [
   },
 ]
 export const WEB_PRODUCT_ID: string = 'product03'
+export type BudgetListProps = {
+  id: string
+  userData: {
+    name: string
+    phone: number
+    email: string
+  }
+  products: {
+    id: string
+    name: string
+    pages?: number
+    languages?: number
+  }[]
+  total: number
+}[]

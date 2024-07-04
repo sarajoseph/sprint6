@@ -25,7 +25,7 @@ export const Product = ({productID, productName, productDescription, productPric
 	
 	return (
 		<div className={`p-10 rounded-2xl shadow-lg border-2 ${borderClass}`}>
-			<div className="flex flex-row justify-between">
+			<div className="flex flex-row flex-wrap justify-between">
 				<div className="flex flex-col">
 					<h2 className="text-3xl font-bold">{productName}</h2>
 					<p>{productDescription}</p>

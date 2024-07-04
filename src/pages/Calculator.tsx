@@ -5,12 +5,14 @@ import { Budget } from '../components/Budget'
 import { CalculatorProvider } from '../context/CalculatorContext'
 import { products } from '../constants'
 import { Link } from 'react-router-dom'
+import { BudgetRequest } from '../components/BudgetRequest'
+import { BudgetList } from '../components/BudgetList'
 export const Calculator = () => {
 	return(
 		<>
 		<CalculatorProvider>
-			<main>
-				<Header />
+			<Header />
+			<main className="px-5">
 				<section className="flex flex-row max-w-3xl mx-auto mt-6">
 					<Link to="/" className="btn btn-neutral text-center">
 						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
@@ -33,6 +35,8 @@ export const Calculator = () => {
 						}
 						<Budget/>
 				</section>
+				<BudgetRequest/>
+				<BudgetList/>
 			</main>
 		</CalculatorProvider>
 		</>

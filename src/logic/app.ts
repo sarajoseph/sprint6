@@ -32,3 +32,20 @@ export const updateBudget = (selectedProducts: ProductsProps): number => {
 	})
 	return newBudget
 }
+
+export const updateBudgetList = (selectedProducts, budget, budgetList, userName, userPhone, userEmail) => {
+	const budgetProducts = selectedProducts.filter((prod) => prod.selected === true)
+	const currentBudgetID = budgetList === undefined ? 'budget_1' : 'budget_'+(budgetList.length+1)
+	const currentBudget = {
+		id: currentBudgetID,
+		userData: {
+			name: userName,
+			phone: userPhone,
+			email: userEmail
+		},
+		products: budgetProducts,
+		total: budget
+	}
+	const newBudgetList = budgetList !== undefined ? [...budgetList, currentBudget] : [currentBudget]
+	return newBudgetList
+}
