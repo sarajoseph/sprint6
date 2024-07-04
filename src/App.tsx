@@ -1,32 +1,16 @@
-import React, { useState } from 'react'
-import { Header } from './components/Header'
-import { Product } from './components/Product'
-import { Budget } from './components/Budget'
-import { AppProvider } from './context/AppContext'
-import { products } from './constants'
+import React from 'react'
+import { Calculator } from './pages/Calculator'
+import { Home } from './pages/Home'
+import { Route, Routes } from 'react-router-dom'
 
 function App() {
   return (
-    <AppProvider>
-      <main>
-        <Header />
-        <section className="flex flex-col gap-y-10 max-w-3xl mx-auto my-20">
-            {
-              products.map((product) => {
-                return (
-                  <Product
-                    key={product.id}
-                    productID={product.id}
-                    productName={product.name}
-                    productDescription={product.description}
-                    productPrice={product.price} />
-                )
-              })
-            }
-            <Budget/>
-        </section>
-      </main>
-    </AppProvider>
+    <>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="calculator" element={<Calculator />} />      
+    </Routes>
+    </>
   )
 }
 

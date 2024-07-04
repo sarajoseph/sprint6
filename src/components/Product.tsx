@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { updateSelectedProducts } from '../logic/app'
-import { AppContext } from '../context/AppContext'
+import { CalculatorContext } from '../context/CalculatorContext'
 import { Web } from './Web'
 import { WEB_PRODUCT_ID } from '../constants'
 
@@ -12,7 +12,7 @@ interface ProductProps {
 }
 
 export const Product = ({productID, productName, productDescription, productPrice}: ProductProps) => {
-	const { selectedProducts, setSelectedProducts } = useContext(AppContext)
+	const { selectedProducts, setSelectedProducts } = useContext(CalculatorContext)
 	const [ borderClass, setBorderClass ] = useState('border-gray-100')
 	const [ checkedProduct, setCheckedProduct ] = useState(false)
 

@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../context/AppContext'
+import { CalculatorContext } from '../context/CalculatorContext'
 
 export const Budget = () => {
-	const { budget } = useContext(AppContext)
+	const { budget } = useContext(CalculatorContext)
 
 	return (
 		<div>

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { AppContext } from '../context/AppContext'
+import { CalculatorContext } from '../context/CalculatorContext'
 import { updateWebFields } from '../logic/app'
 interface QuantityInputProps {
 	qnty_npt_id: string
@@ -7,7 +7,7 @@ interface QuantityInputProps {
 }
 
 export const QuantityInput = ({qnty_npt_id, label}: QuantityInputProps) => {
-	const { selectedProducts, setSelectedProducts } = useContext(AppContext)
+	const { selectedProducts, setSelectedProducts } = useContext(CalculatorContext)
 	const setInputValue = (operation: string) => {
 		const eQuantityInput: HTMLElement = document.getElementById(qnty_npt_id) as HTMLElement
 		const input: HTMLInputElement = eQuantityInput.querySelector('input') as HTMLInputElement
