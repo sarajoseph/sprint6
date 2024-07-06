@@ -7,6 +7,7 @@ import { products } from '../constants'
 import { Link } from 'react-router-dom'
 import { BudgetRequest } from '../components/BudgetRequest'
 import { BudgetList } from '../components/BudgetList'
+import { InfoDialog } from '../components/InfoDialog'
 export const Calculator = () => {
 	return(
 		<>
@@ -37,6 +38,7 @@ export const Calculator = () => {
 				</section>
 				<BudgetRequest/>
 				<BudgetList/>
+				<InfoDialog/>
 			</main>
 		</CalculatorProvider>
 		</>
