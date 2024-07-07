@@ -48,3 +48,9 @@ export type BudgetListProps = {
   }[]
   total: number
 }[]
+export const TOTAL_ASCENDING: string = 'total_ascending'
+export const TOTAL_DESCENDING: string = 'total_descending'
+export const DATE_ASCENDING: string = 'date_ascending'
+export const DATE_DESCENDING: string = 'date_descending'
+export const NAME_ASCENDING: string = 'name_ascending'
+export const NAME_DESCENDING: string = 'name_descending'
