@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { CalculatorContext } from '../context/CalculatorContext'
-import { updateWebFields } from '../logic/app'
+import { getWebFields } from '../logic/app'
 interface QuantityInputProps {
 	qnty_npt_id: string
 	label: string
@@ -20,7 +20,7 @@ export const QuantityInput = ({qnty_npt_id, label}: QuantityInputProps) => {
 		}
 		input.setAttribute('value', input.value)
 		input.addEventListener('change', () => {
-			const newSelectedProducts = updateWebFields(selectedProducts, qnty_npt_id, input.valueAsNumber)
+			const newSelectedProducts = getWebFields(selectedProducts, qnty_npt_id, input.valueAsNumber)
 			setSelectedProducts(newSelectedProducts)
 		} );
 		const event = new Event('change');

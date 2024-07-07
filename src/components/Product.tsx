@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { updateSelectedProducts } from '../logic/app'
+import { getSelectedProducts } from '../logic/app'
 import { CalculatorContext } from '../context/CalculatorContext'
 import { Web } from './Web'
 import { WEB_PRODUCT_ID } from '../constants'
@@ -17,7 +17,7 @@ export const Product = ({productID, productName, productDescription, productPric
 	const [ checkedProduct, setCheckedProduct ] = useState(false)
 
 	const handleChange = (productID, checked) => {
-		const newSelectedProducts = updateSelectedProducts(selectedProducts, productID, checked)
+		const newSelectedProducts = getSelectedProducts(selectedProducts, productID, checked)
 		setSelectedProducts(newSelectedProducts)
 		checked ? setBorderClass('border-solid border-primary') : setBorderClass('border-gray-100')
 		setCheckedProduct(checked)

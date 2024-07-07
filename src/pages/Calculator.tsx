@@ -1,7 +1,7 @@
 import React from 'react'
 import { Header } from '../components/Header'
 import { Product } from '../components/Product'
-import { Budget } from '../components/Budget'
+import { BudgetTotal } from '../components/BudgetTotal'
 import { CalculatorProvider } from '../context/CalculatorContext'
 import { products } from '../constants'
 import { Link } from 'react-router-dom'
@@ -34,7 +34,7 @@ export const Calculator = () => {
 								)
 							})
 						}
-						<Budget/>
+						<BudgetTotal/>
 				</section>
 				<BudgetRequest/>
 				<BudgetList/>

@@ -1,6 +1,6 @@
 import { ProductsProps, WEB_PRODUCT_ID } from "../constants"
 
-export const updateSelectedProducts = (selectedProducts: ProductsProps, productID: string, checked: boolean): ProductsProps => {
+export const getSelectedProducts = (selectedProducts: ProductsProps, productID: string, checked: boolean): ProductsProps => {
 	const newSelectedProducts = selectedProducts.map((product) => {
 	 if (product.id === productID) {
 		 product.selected = checked
@@ -10,7 +10,7 @@ export const updateSelectedProducts = (selectedProducts: ProductsProps, productI
 	return newSelectedProducts
 }
 
-export const updateWebFields = (selectedProducts: ProductsProps, qnty_npt_id: string, inputNumber: number) => {
+export const getWebFields = (selectedProducts: ProductsProps, qnty_npt_id: string, inputNumber: number) => {
 	const newSelectedProducts = selectedProducts.map((product) => {
 		if (product.id === WEB_PRODUCT_ID) {
 			product[qnty_npt_id] = inputNumber
@@ -20,7 +20,7 @@ export const updateWebFields = (selectedProducts: ProductsProps, qnty_npt_id: st
 	return newSelectedProducts
 }
 
-export const updateBudget = (selectedProducts: ProductsProps): number => {
+export const getTotalBudget = (selectedProducts: ProductsProps): number => {
 	let newBudget = 0
 	selectedProducts.map((product) => {
 		if (product.selected === true) {
@@ -33,7 +33,7 @@ export const updateBudget = (selectedProducts: ProductsProps): number => {
 	return newBudget
 }
 
-export const updateBudgetList = (selectedProducts, budget, budgetList, userName, userPhone, userEmail) => {
+export const getBudgetList = (selectedProducts, totalBudget, budgetList, userName, userPhone, userEmail) => {
 	const budgetProducts = selectedProducts.filter((prod) => prod.selected === true)
 	const currentBudgetID = budgetList === undefined ? 'budget_1' : 'budget_'+(budgetList.length+1)
 	const currentBudget = {
@@ -44,7 +44,7 @@ export const updateBudgetList = (selectedProducts, budget, budgetList, userName,
 			email: userEmail
 		},
 		products: budgetProducts,
-		total: budget
+		total: totalBudget
 	}
 	const newBudgetList = budgetList !== undefined ? [...budgetList, currentBudget] : [currentBudget]
 	return newBudgetList
