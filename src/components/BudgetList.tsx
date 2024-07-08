@@ -11,6 +11,7 @@ export const BudgetList = () => {
 	const [totalCSSClass, setTotalCSSClass] = useState<string>('')
 	const [dateCSSClass, setDateCSSClass] = useState<string>('')
 	const [nameCSSClass, setNameCSSClass] = useState<string>('')
+	const [inputSearch, setInputSearch] = useState<string>('')
 	const sortMethods = {
 		none: { method: (a, b) => null },
 		total_ascending: { method: (a, b) => a.total - b.total },
@@ -73,7 +74,7 @@ export const BudgetList = () => {
 				<h2 className="text-3xl font-bold">Pressupostos en curs:</h2>
 				<div className="flex justify-end gap-5">
 					<label className="input input-bordered flex items-center gap-2 max-w-full md:max-w-[25%]">
-						<input type="text" className="w-full" placeholder="Buscar..." />
+						<input type="text" className="w-full" placeholder="Buscar..." onChange={(e) => setInputSearch(e.target.value)}/>
 						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
 							<path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
 						</svg>
@@ -99,7 +100,7 @@ export const BudgetList = () => {
 				</div>
 				<>
 				{
-					budgetList.sort(sortMethods[sortState].method).map((b) => {
+					budgetList.filter((b) => ((b.userData.name).toLocaleLowerCase()).includes(inputSearch.toLocaleLowerCase())).sort(sortMethods[sortState].method).map((b) => {
 						return(
 							<div key={b.id} className="p-10 rounded-2xl shadow-lg">
 								<div className="flex flex-row flex-wrap gap-5 max-w-full">
