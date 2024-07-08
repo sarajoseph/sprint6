@@ -6,7 +6,7 @@ import { CalculatorProvider } from '../context/CalculatorContext'
 import { Link } from 'react-router-dom'
 import { BudgetRequest } from '../components/BudgetRequest'
 import { BudgetList } from '../components/BudgetList'
-import { InfoDialog } from '../components/InfoDialog'
+import { InfoDialog } from '../components/modals/InfoDialog'
 import { PaymentType } from '../components/PaymentType'
 export const Calculator = () => {
 	return(

@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { CalculatorContext } from '../context/CalculatorContext'
 import { getBudgetList } from '../logic/app'
 export const BudgetRequest = () => {
-	const { selectedProducts, totalBudget, budgetList, setBudgetList } = useContext(CalculatorContext)
+	const { selectedProducts, totalBudget, budgetList, setBudgetList, annualPayment } = useContext(CalculatorContext)
 	const [ nameEmptyClass, setNameEmptyClass ] = useState('')
 	const [ phoneEmptyClass, setPhoneEmptyClass ] = useState('')
 	const [ emailEmptyClass, setEmailEmptyClass ] = useState('')
@@ -11,7 +11,7 @@ export const BudgetRequest = () => {
 		const userPhone = (document.getElementById('budgetRequestPhone') as HTMLInputElement).value
 		const userEmail = (document.getElementById('budgetRequestEmail') as HTMLInputElement).value
 		if (userName.trim() !== '' && userPhone.trim() !== '' && userEmail.trim() !== '') {
-			const newBudgetList = getBudgetList(selectedProducts, totalBudget, budgetList, userName, userPhone, userEmail)
+			const newBudgetList = getBudgetList(selectedProducts, totalBudget, budgetList, userName, userPhone, userEmail, annualPayment)
 			setBudgetList(newBudgetList)
 		} else {
 			setEmptyInput()

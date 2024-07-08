@@ -33,9 +33,10 @@ export const getTotalBudget = (selectedProducts: ProductsProps): number => {
 	return newBudget
 }
 
-export const getBudgetList = (selectedProducts, totalBudget, budgetList, userName, userPhone, userEmail) => {
+export const getBudgetList = (selectedProducts, totalBudget, budgetList, userName, userPhone, userEmail, annualPayment) => {
 	const budgetProducts = selectedProducts.filter((prod) => prod.selected === true)
 	const currentBudgetID = budgetList === undefined ? 'budget_1' : 'budget_'+(budgetList.length+1)
+	const url = getBudgetURL(budgetProducts, annualPayment)
 	const currentBudget = {
 		id: currentBudgetID,
 		userData: {
@@ -44,10 +45,23 @@ export const getBudgetList = (selectedProducts, totalBudget, budgetList, userNam
 			email: userEmail
 		},
 		products: budgetProducts,
-		total: totalBudget
+		total: totalBudget,
+		url: url
 	}
 	const newBudgetList = budgetList !== undefined ? [...budgetList, currentBudget] : [currentBudget]
 	return newBudgetList
 }
 
 export const getDiscount = (initialPrice: number) => initialPrice - (initialPrice * 0.20)
+
+export const getBudgetURL = (budgetProducts, budgetPayment: boolean) => {
+	let url: string = '/budget/'
+	budgetProducts.filter((prod) => prod.selected === true).map((product) => {
+		url += product.id+'=true&'
+		url += product.pages !== undefined ? 'pages='+product.pages+'&' : ''
+		url += product.languages !== undefined ? 'lang='+product.languages+'&' : ''
+	})
+	url += budgetPayment ? 'annual=true' : ''
+	url = url.charAt(url.length-1) === '&' ? url.substring(0, url.length - 1) : url
+	return url
+}

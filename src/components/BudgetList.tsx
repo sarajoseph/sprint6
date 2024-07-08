@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { CalculatorContext } from '../context/CalculatorContext'
 import { DATE_ASCENDING, DATE_DESCENDING, NAME_ASCENDING, NAME_DESCENDING, TOTAL_ASCENDING, TOTAL_DESCENDING, WEB_PRODUCT_ID } from '../constants'
 import { ChevronDown, ChevronUp } from './ChevronIcons'
+import { Link } from 'react-router-dom'
+import { ShareURL } from './modals/ShareURL'
 export const BudgetList = () => {
 	const { budgetList } = useContext(CalculatorContext)
 	const [sortState, setSortState] = useState<string>('none')
@@ -66,6 +68,10 @@ export const BudgetList = () => {
 				setNameCSSClass('')
 		}
 	}
+	const shareLink = (url) => {
+		const eShareURL: HTMLElement = document.getElementById('shareURL') as HTMLElement
+		eShareURL.showModal()
+	}
 	return (
 		<>
 		{
@@ -101,7 +107,7 @@ export const BudgetList = () => {
 				<>
 				{
 					budgetList.filter((b) => ((b.userData.name).toLocaleLowerCase()).includes(inputSearch.toLocaleLowerCase())).sort(sortMethods[sortState].method).map((b) => {
-						return(
+						return (
 							<div key={b.id} className="p-10 rounded-2xl shadow-lg">
 								<div className="flex flex-row flex-wrap gap-5 max-w-full">
 									<div className="flex flex-col grow">
@@ -128,6 +134,14 @@ export const BudgetList = () => {
 										<p className="text-5xl font-bold">{b.total}€</p>
 									</div>
 								</div>
+								<div className="flex justify-end mt-5">
+									<button onClick={() => shareLink(b.url)}>
+										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+											<path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
+										</svg>
+									</button>
+								</div>
+								<ShareURL url={b.url}/>
 							</div>
 						)
 					})
