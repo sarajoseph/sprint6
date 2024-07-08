@@ -1,13 +1,13 @@
 import React from 'react'
 import { Header } from '../components/Header'
-import { Product } from '../components/Product'
+import { ProductsList } from '../components/ProductsList'
 import { BudgetTotal } from '../components/BudgetTotal'
 import { CalculatorProvider } from '../context/CalculatorContext'
-import { products } from '../constants'
 import { Link } from 'react-router-dom'
 import { BudgetRequest } from '../components/BudgetRequest'
 import { BudgetList } from '../components/BudgetList'
 import { InfoDialog } from '../components/InfoDialog'
+import { PaymentType } from '../components/PaymentType'
 export const Calculator = () => {
 	return(
 		<>
@@ -21,20 +21,10 @@ export const Calculator = () => {
 						</svg>
 					</Link>
 				</section>
+				<PaymentType />
 				<section className="flex flex-col gap-y-10 max-w-3xl mx-auto my-20">
-						{
-							products.map((product) => {
-								return (
-									<Product
-										key={product.id}
-										productID={product.id}
-										productName={product.name}
-										productDescription={product.description}
-										productPrice={product.price} />
-								)
-							})
-						}
-						<BudgetTotal/>
+					<ProductsList/>
+					<BudgetTotal/>
 				</section>
 				<BudgetRequest/>
 				<BudgetList/>

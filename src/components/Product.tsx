@@ -12,10 +12,9 @@ interface ProductProps {
 }
 
 export const Product = ({productID, productName, productDescription, productPrice}: ProductProps) => {
-	const { selectedProducts, setSelectedProducts } = useContext(CalculatorContext)
+	const { selectedProducts, setSelectedProducts, annualPayment } = useContext(CalculatorContext)
 	const [ borderClass, setBorderClass ] = useState('border-gray-100')
 	const [ checkedProduct, setCheckedProduct ] = useState(false)
-
 	const handleChange = (productID, checked) => {
 		const newSelectedProducts = getSelectedProducts(selectedProducts, productID, checked)
 		setSelectedProducts(newSelectedProducts)
@@ -25,14 +24,19 @@ export const Product = ({productID, productName, productDescription, productPric
 	
 	return (
 		<div className={`p-10 rounded-2xl shadow-lg border-2 ${borderClass}`}>
-			<div className="flex flex-row flex-wrap justify-between">
-				<div className="flex flex-col">
+			<div className="flex flex-col md:flex-row flex-wrap md:justify-between gap-y-3 md:gap-y-0">
+				<div className="flex flex-col gap-2 justify-center">
 					<h2 className="text-3xl font-bold">{productName}</h2>
 					<p>{productDescription}</p>
-				</div>			
-				<div className="text-5xl font-bold">{productPrice}€</div>
+				</div>
+				<div className="flex flex-col gap-2 justify-center">
+					{
+					annualPayment && <span className="text-lg text-yellow-500 font-bold">Ahorra un 20%</span>
+					}
+					<div className="text-5xl font-bold">{productPrice}€</div>
+				</div>				
 				<div className="form-control justify-center">
-					<label className="cursor-pointer label">
+					<label className="cursor-pointer label justify-start">
 						<input 
 							type="checkbox" 
 							className="checkbox [--chkbg:oklch(var(--p))] [--chkfg:oklch(var(--b1))]" 

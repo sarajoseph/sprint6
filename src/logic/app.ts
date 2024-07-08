@@ -2,10 +2,10 @@ import { ProductsProps, WEB_PRODUCT_ID } from "../constants"
 
 export const getSelectedProducts = (selectedProducts: ProductsProps, productID: string, checked: boolean): ProductsProps => {
 	const newSelectedProducts = selectedProducts.map((product) => {
-	 if (product.id === productID) {
-		 product.selected = checked
-	 }
-	 return product
+		if (product.id === productID) {
+			product.selected = checked
+		}
+		return product
 	})
 	return newSelectedProducts
 }
@@ -49,3 +49,5 @@ export const getBudgetList = (selectedProducts, totalBudget, budgetList, userNam
 	const newBudgetList = budgetList !== undefined ? [...budgetList, currentBudget] : [currentBudget]
 	return newBudgetList
 }
+
+export const getDiscount = (initialPrice: number) => initialPrice - (initialPrice * 0.20)
