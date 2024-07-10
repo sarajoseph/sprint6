@@ -4,7 +4,8 @@ import { getDiscount, getTotalBudget } from '../logic/app'
 
 export const CalculatorContext = createContext(null)
 
-export const CalculatorProvider = ({children}) => {	
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const CalculatorProvider = ({children}: any) => {	
   const [totalBudget, setTotalBudget] = useState<number>(0)
   const [selectedProducts, setSelectedProducts] = useState<ProductsProps>(products)
   const [budgetList, setBudgetList] = useState<BudgetListProps | undefined>(undefined)

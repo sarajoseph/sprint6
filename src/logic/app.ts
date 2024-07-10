@@ -1,4 +1,4 @@
-import { ProductsProps, WEB_PRODUCT_ID } from "../constants"
+import { BudgetListProps, ProductsProps, WEB_PRODUCT_ID } from "../constants"
 
 export const getSelectedProducts = (selectedProducts: ProductsProps, productID: string, checked: boolean): ProductsProps => {
 	const newSelectedProducts = selectedProducts.map((product) => {
@@ -33,10 +33,10 @@ export const getTotalBudget = (selectedProducts: ProductsProps): number => {
 	return newBudget
 }
 
-export const getBudgetList = (selectedProducts, totalBudget, budgetList, userName, userPhone, userEmail, annualPayment) => {
+export const getBudgetList = (selectedProducts, totalBudget: number, budgetList: BudgetListProps, userName: string, userPhone: string, userEmail: string, annualPayment: boolean) => {
 	const budgetProducts = selectedProducts.filter((prod) => prod.selected === true)
-	const currentBudgetID = budgetList === undefined ? 'budget_1' : 'budget_'+(budgetList.length+1)
-	const url = getBudgetURL(budgetProducts, annualPayment)
+	const currentBudgetID: string = budgetList === undefined ? 'budget_1' : 'budget_'+(budgetList.length+1)
+	const url: string = getBudgetURL(budgetProducts, annualPayment)
 	const currentBudget = {
 		id: currentBudgetID,
 		userData: {
@@ -64,4 +64,8 @@ export const getBudgetURL = (budgetProducts, budgetPayment: boolean) => {
 	url += budgetPayment ? 'annual=true' : ''
 	url = url.charAt(url.length-1) === '&' ? url.substring(0, url.length - 1) : url
 	return url
+}
+
+export const openModal = (e: Element) => {
+	e.showModal()
 }

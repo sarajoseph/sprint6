@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { CalculatorContext } from '../context/CalculatorContext'
 import { DATE_ASCENDING, DATE_DESCENDING, NAME_ASCENDING, NAME_DESCENDING, TOTAL_ASCENDING, TOTAL_DESCENDING, WEB_PRODUCT_ID } from '../constants'
 import { ChevronDown, ChevronUp } from './ChevronIcons'
-import { Link } from 'react-router-dom'
 import { ShareURL } from './modals/ShareURL'
+import { openModal } from '../logic/app'
 export const BudgetList = () => {
 	const { budgetList } = useContext(CalculatorContext)
 	const [sortState, setSortState] = useState<string>('none')
@@ -15,7 +15,7 @@ export const BudgetList = () => {
 	const [nameCSSClass, setNameCSSClass] = useState<string>('')
 	const [inputSearch, setInputSearch] = useState<string>('')
 	const sortMethods = {
-		none: { method: (a, b) => null },
+		none: { method: () => null },
 		total_ascending: { method: (a, b) => a.total - b.total },
 		total_descending: { method: (a, b) => b.total - a.total },
 		date_ascending: { method: (a, b) => a.id > b.id ? 1 : -1 },
@@ -67,10 +67,6 @@ export const BudgetList = () => {
 				setDateCSSClass('')
 				setNameCSSClass('')
 		}
-	}
-	const shareLink = (url) => {
-		const eShareURL: HTMLElement = document.getElementById('shareURL') as HTMLElement
-		eShareURL.showModal()
 	}
 	return (
 		<>
@@ -135,7 +131,7 @@ export const BudgetList = () => {
 									</div>
 								</div>
 								<div className="flex justify-end mt-5">
-									<button onClick={() => shareLink(b.url)}>
+									<button onClick={() => openModal(document.getElementById('shareURL') as HTMLElement)}>
 										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
 											<path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
 										</svg>

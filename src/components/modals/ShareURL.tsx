@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-export const ShareURL = ({url}) => {
+export const ShareURL = ({url}: {url: string}) => {
 	const fullURL: string = window.location.origin + url
 	const sleep = (time: number) => {
 		return new Promise(resolve=>setTimeout(resolve, time));

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { CalculatorContext } from '../context/CalculatorContext'
-import { getWebFields } from '../logic/app'
+import { getWebFields, openModal } from '../logic/app'
 interface QuantityInputProps {
 	qnty_npt_id: string
 	label: string
@@ -30,7 +30,7 @@ export const QuantityInput = ({qnty_npt_id, label}: QuantityInputProps) => {
 		const eInfoDialog: HTMLElement = document.getElementById('infoDialog') as HTMLElement
 		(eInfoDialog.querySelector('h3') as HTMLElement ).innerHTML = qnty_npt_id === 'pages' ? 'Número de pàgines' : 'Número de llenguatges';
 		(eInfoDialog.querySelector('p') as HTMLElement).innerHTML = qnty_npt_id === 'pages' ? 'Afegeix les pàgines que necessitis per dur a terme el teu projecte. El cost de cada pàgina es de 30€.' : 'Afegeix els llenguatges que tindrà el teu projecte. El cost de cada llenguatge es de 30€.'
-		eInfoDialog.showModal()
+		openModal(eInfoDialog)
 	}
 	return (
 		<div id={qnty_npt_id} className="flex flex-row items-center gap-x-4">
