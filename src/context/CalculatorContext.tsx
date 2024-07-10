@@ -25,9 +25,9 @@ export const CalculatorProvider = ({children}: any) => {
     setSelectedProducts(newSelectedProducts)
   }, [annualPayment])
 
-	return (
-		<CalculatorContext.Provider value={{selectedProducts, setSelectedProducts, totalBudget, setTotalBudget, budgetList, setBudgetList, annualPayment, setAnnualPayment}}>
-			{children}
-		</CalculatorContext.Provider>
-	)
+  return (
+    <CalculatorContext.Provider value={{selectedProducts, setSelectedProducts, totalBudget, setTotalBudget, budgetList, setBudgetList, annualPayment, setAnnualPayment}}>
+      {children}
+    </CalculatorContext.Provider>
+  )
 }
