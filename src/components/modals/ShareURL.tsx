@@ -1,4 +1,4 @@
-import React from 'react'
+/* eslint-disable react/react-in-jsx-scope */
 import { Link } from 'react-router-dom'
 export const ShareURL = ({url}: {url: string}) => {
   const fullURL: string = window.location.origin + url

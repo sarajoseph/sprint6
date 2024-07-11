@@ -1,19 +1,19 @@
-import React from 'react'
+/* eslint-disable react/react-in-jsx-scope */
 import { Calculator } from './pages/Calculator'
 import { Home } from './pages/Home'
 import { Route, Routes } from 'react-router-dom'
 import { BudgetUrl } from './pages/BudgetUrl'
 import { NotFound } from './pages/NotFound'
 
-function App() {
+function App () {
   return (
     <>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="calculator" element={<Calculator />} />
-      <Route path="budget/:params" element={<BudgetUrl />} />
-      <Route path="*" element={<NotFound/>} />
-    </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="calculator" element={<Calculator />} />
+        <Route path="budget/:params" element={<BudgetUrl />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
   )
 }

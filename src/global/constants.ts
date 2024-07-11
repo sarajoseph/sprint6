@@ -1,12 +1,5 @@
-export type ProductsProps = {
-  id: string
-  name: string
-  description: string
-  price: number
-  selected: boolean
-  pages?: number
-  languages?: number
-}[]
+import { ProductsProps } from "./types"
+
 export const products: ProductsProps = [
   {
     'id': 'product01',
@@ -58,21 +51,6 @@ export const initialProducts: ProductsProps = [
   },
 ]
 export const WEB_PRODUCT_ID: string = 'product03'
-export type BudgetListProps = {
-  id: string
-  userData: {
-    name: string
-    phone: number
-    email: string
-  }
-  products: {
-    id: string
-    name: string
-    pages?: number
-    languages?: number
-  }[]
-  total: number
-}[]
 export const TOTAL_ASCENDING: string = 'total_ascending'
 export const TOTAL_DESCENDING: string = 'total_descending'
 export const DATE_ASCENDING: string = 'date_ascending'

@@ -1,11 +1,8 @@
-import React, { useContext } from 'react'
+/* eslint-disable react/react-in-jsx-scope */
+import { useContext } from 'react'
 import { CalculatorContext } from '../context/CalculatorContext'
 import { getWebFields, openModal } from '../logic/app'
-interface QuantityInputProps {
-  qnty_npt_id: string
-  label: string
-}
-
+import { QuantityInputProps } from '../global/types'
 export const QuantityInput = ({qnty_npt_id, label}: QuantityInputProps) => {
   const { selectedProducts, setSelectedProducts } = useContext(CalculatorContext)
   const setInputValue = (operation: string) => {
@@ -27,8 +24,8 @@ export const QuantityInput = ({qnty_npt_id, label}: QuantityInputProps) => {
     input.dispatchEvent(event)
   }
   const openInfoDialog = (qnty_npt_id: string) => {
-    const eInfoDialog: HTMLElement = document.getElementById('infoDialog') as HTMLElement
-    (eInfoDialog.querySelector('h3') as HTMLElement ).innerHTML = qnty_npt_id === 'pages' ? 'Número de pàgines' : 'Número de llenguatges'
+    const eInfoDialog: HTMLDialogElement = document.getElementById('infoDialog') as HTMLDialogElement
+    (eInfoDialog.querySelector('h3') as HTMLElement ).innerHTML = qnty_npt_id === 'pages' ? 'Número de pàgines' : 'Número de llenguatges';
     (eInfoDialog.querySelector('p') as HTMLElement).innerHTML = qnty_npt_id === 'pages' ? 'Afegeix les pàgines que necessitis per dur a terme el teu projecte. El cost de cada pàgina es de 30€.' : 'Afegeix els llenguatges que tindrà el teu projecte. El cost de cada llenguatge es de 30€.'
     openModal(eInfoDialog)
   }

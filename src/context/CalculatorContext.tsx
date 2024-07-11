@@ -1,10 +1,12 @@
-import React, { createContext, useEffect, useState } from 'react'
-import { BudgetListProps, ProductsProps, initialProducts, products } from '../constants'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/react-in-jsx-scope */
+import { createContext, useEffect, useState } from 'react'
+import { initialProducts, products } from '../global/constants'
+import { BudgetListProps, ProductsProps } from '../global/types'
 import { getDiscount, getTotalBudget } from '../logic/app'
 
-export const CalculatorContext = createContext(null)
+export const CalculatorContext = createContext<any | null>(null)
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const CalculatorProvider = ({children}: any) => {	
   const [totalBudget, setTotalBudget] = useState<number>(0)
   const [selectedProducts, setSelectedProducts] = useState<ProductsProps>(products)
@@ -26,7 +28,7 @@ export const CalculatorProvider = ({children}: any) => {
   }, [annualPayment])
 
   return (
-    <CalculatorContext.Provider value={{selectedProducts, setSelectedProducts, totalBudget, setTotalBudget, budgetList, setBudgetList, annualPayment, setAnnualPayment}}>
+    <CalculatorContext.Provider value={{ selectedProducts, setSelectedProducts, totalBudget, setTotalBudget, budgetList, setBudgetList, annualPayment, setAnnualPayment }}>
       {children}
     </CalculatorContext.Provider>
   )

@@ -1,4 +1,5 @@
-import React, { useContext } from 'react'
+/* eslint-disable react/react-in-jsx-scope */
+import { useContext } from 'react'
 import { CalculatorContext } from '../context/CalculatorContext'
 
 export const BudgetTotal = () => {

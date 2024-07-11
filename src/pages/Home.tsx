@@ -1,8 +1,8 @@
+/* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react'
 import { Link } from 'react-router-dom'
 export const Home = () => {
-  return(
+  return (
     <div className="flex flex-col text-center gap-y-10 max-w-3xl mx-auto py-20">
       <h1 className="text-5xl font-bold">Welcome!</h1>
       <p>

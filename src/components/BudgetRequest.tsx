@@ -1,6 +1,8 @@
-import React, { useContext, useState } from 'react'
+/* eslint-disable react/react-in-jsx-scope */
+import { useContext, useState } from 'react'
 import { CalculatorContext } from '../context/CalculatorContext'
 import { getBudgetList } from '../logic/app'
+import { ProductProps } from '../global/types'
 export const BudgetRequest = () => {
   const { selectedProducts, totalBudget, budgetList, setBudgetList, annualPayment } = useContext(CalculatorContext)
   const [ nameEmptyClass, setNameEmptyClass ] = useState('')
@@ -28,7 +30,7 @@ export const BudgetRequest = () => {
   return (
     <>
     {
-      selectedProducts.some((product) => product.selected === true) &&
+      selectedProducts.some((product: ProductProps) => product.selected === true) &&
       <section className="flex flex-col gap-y-10 max-w-3xl mx-auto my-20">
         <div className="p-10 rounded-2xl shadow-lg">
           <h2 className="text-3xl font-bold mb-5">Demanar pressupost</h2>

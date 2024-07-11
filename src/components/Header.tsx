@@ -1,5 +1,4 @@
-import React from 'react'
-
+/* eslint-disable react/react-in-jsx-scope */
 export const Header = () => {
   return (
     <div className="rounded-3xl bg-gray-200 text-center py-20">

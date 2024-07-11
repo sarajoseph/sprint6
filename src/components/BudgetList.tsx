@@ -1,9 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useContext, useEffect, useState } from 'react'
 import { CalculatorContext } from '../context/CalculatorContext'
-import { DATE_ASCENDING, DATE_DESCENDING, NAME_ASCENDING, NAME_DESCENDING, TOTAL_ASCENDING, TOTAL_DESCENDING, WEB_PRODUCT_ID } from '../constants'
+import { DATE_ASCENDING, DATE_DESCENDING, NAME_ASCENDING, NAME_DESCENDING, TOTAL_ASCENDING, TOTAL_DESCENDING, WEB_PRODUCT_ID } from '../global/constants'
 import { ChevronDown, ChevronUp } from './ChevronIcons'
 import { ShareURL } from './modals/ShareURL'
 import { openModal } from '../logic/app'
+import { ProductProps, sortMethodsProps } from '../global/types'
 export const BudgetList = () => {
   const { budgetList } = useContext(CalculatorContext)
   const [sortState, setSortState] = useState<string>('none')
@@ -14,19 +17,19 @@ export const BudgetList = () => {
   const [dateCSSClass, setDateCSSClass] = useState<string>('')
   const [nameCSSClass, setNameCSSClass] = useState<string>('')
   const [inputSearch, setInputSearch] = useState<string>('')
-  const sortMethods = {
+  const sortMethods: sortMethodsProps = {
     none: { method: () => null },
-    total_ascending: { method: (a, b) => a.total - b.total },
-    total_descending: { method: (a, b) => b.total - a.total },
-    date_ascending: { method: (a, b) => a.id > b.id ? 1 : -1 },
-    date_descending: { method: (a, b) => (a.id < b.id ? 1 : -1) },
-    name_ascending: { method: (a, b) => (a.userData.name.toLowerCase() < b.userData.name.toLowerCase() ? -1 : 1) },
-    name_descending: { method: (a, b) => (a.userData.name.toLowerCase() > b.userData.name.toLowerCase() ? -1 : 1) }
+    total_ascending: { method: (a: any, b: any) => a.total - b.total },
+    total_descending: { method: (a: any, b: any) => b.total - a.total },
+    date_ascending: { method: (a: any, b: any) => a.id > b.id ? 1 : -1 },
+    date_descending: { method: (a: any, b: any) => (a.id < b.id ? 1 : -1) },
+    name_ascending: { method: (a: any, b: any) => (a.userData.name.toLowerCase() < b.userData.name.toLowerCase() ? -1 : 1) },
+    name_descending: { method: (a: any, b: any) => (a.userData.name.toLowerCase() > b.userData.name.toLowerCase() ? -1 : 1) }
   }
   useEffect(() => {
     toggleSortButtons()
   }, [sortState])
-  const handleClick = (filter: string) => {
+  const handleClick = (filter: string): void => {
     switch(filter){
       case 'total':
         setSortState(totalState)
@@ -42,7 +45,7 @@ export const BudgetList = () => {
         break
     }
   }
-  const toggleSortButtons = () => {
+  const toggleSortButtons = (): void => {
     switch (sortState) {
       case TOTAL_ASCENDING:
       case TOTAL_DESCENDING:
@@ -102,7 +105,7 @@ export const BudgetList = () => {
         </div>
         <>
         {
-          budgetList.filter((b) => ((b.userData.name).toLocaleLowerCase()).includes(inputSearch.toLocaleLowerCase())).sort(sortMethods[sortState].method).map((b) => {
+          budgetList.filter((b: any) => ((b.userData.name).toLocaleLowerCase()).includes(inputSearch.toLocaleLowerCase())).sort(sortMethods[sortState as keyof sortMethodsProps].method).map((b: any) => {
             return (
               <div key={b.id} className="p-10 rounded-2xl shadow-lg">
                 <div className="flex flex-row flex-wrap gap-5 max-w-full">
@@ -115,7 +118,7 @@ export const BudgetList = () => {
                     <p className="font-bold">Serveis contractats:</p>
                     <ul className="list-disc list-inside">
                     {
-                      b.products.map((product) => {
+                      b.products.map((product: ProductProps) => {
                         return (
                           product.id === WEB_PRODUCT_ID ? 
                             <li key={product.id}>{`${product.name} (${product.pages} pàgines, ${product.languages} llenguatges)`}</li> 
@@ -131,7 +134,7 @@ export const BudgetList = () => {
                   </div>
                 </div>
                 <div className="flex justify-end mt-5">
-                  <button onClick={() => openModal(document.getElementById('shareURL') as HTMLElement)}>
+                  <button onClick={() => openModal(document.getElementById('shareURL') as HTMLDialogElement)}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
                     </svg>

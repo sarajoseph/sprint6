@@ -1,4 +1,4 @@
-import React from 'react'
+/* eslint-disable react/react-in-jsx-scope */
 import { Header } from '../components/Header'
 import { ProductsList } from '../components/ProductsList'
 import { BudgetTotal } from '../components/BudgetTotal'

@@ -1,7 +1,8 @@
-import React from 'react'
+/* eslint-disable react/react-in-jsx-scope */
 import { useParams } from 'react-router-dom'
 import { getDiscount, getTotalBudget } from '../logic/app'
-import { ProductsProps, WEB_PRODUCT_ID } from '../constants'
+import { WEB_PRODUCT_ID } from '../global/constants'
+import { ProductsProps } from '../global/types'
 export const BudgetUrl = () => {
   const { params } = useParams()
   const searchParams = new URLSearchParams(params)

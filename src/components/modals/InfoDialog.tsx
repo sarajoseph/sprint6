@@ -1,4 +1,4 @@
-import React from 'react'
+/* eslint-disable react/react-in-jsx-scope */
 export const InfoDialog = () => {
   return (
     <dialog id="infoDialog" className="modal">
