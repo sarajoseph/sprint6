@@ -2,8 +2,7 @@
   
 Application with the objective of speeding up calculations for the budget of creating a web page, through selection boxes, input fields and buttons.
    
-<img alt="readme screenshot" src="./public/images/readme001.png">  
-<img alt="readme screenshot" src="./public/images/readme002.png">  
+<img alt="readme gif" src="./public/images/screenrecord.gif">  
   
   
 ## Getting started  
